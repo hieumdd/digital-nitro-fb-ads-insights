@@ -12,7 +12,7 @@ concurrency: ${{ github.ref }}
 env:
   ENV_KEY: env-vars
   ENV_FILE: env.yaml
-  GCP_SA: dulcet-outlook-361714
+  GCP_SA: etl-167@dulcet-outlook-361714.iam.gserviceaccount.com
 
 jobs:
   set-env:
