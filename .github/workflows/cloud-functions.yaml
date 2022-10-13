@@ -12,7 +12,7 @@ concurrency: ${{ github.ref }}
 env:
   ENV_KEY: env-vars
   ENV_FILE: env.yaml
-  GCP_SA: etl-95@byu-pathway-power-bi-report.iam.gserviceaccount.com
+  GCP_SA: dulcet-outlook-361714
 
 jobs:
   set-env:
@@ -22,16 +22,15 @@ jobs:
     steps:
       - if: github.ref_name == 'dev'
         run: |
-          echo "FUNCTION_NAME=byu-pathway-fb-ads-insights-dev" >> $GITHUB_ENV
-          echo "PUBLIC_URL=https://us-central1-byu-pathway-power-bi-report.cloudfunctions.net/byu-pathway-fb-ads-insights-dev" >> $GITHUB_ENV
+          echo "FUNCTION_NAME=digital-nitro-fb-ads-insights-dev" >> $GITHUB_ENV
+          echo "PUBLIC_URL=https://us-central1-dulcet-outlook-361714.cloudfunctions.net/digital-nitro-fb-ads-insights-dev" >> $GITHUB_ENV
 
       - if: github.ref_name == 'master'
         run: |
-          echo "FUNCTION_NAME=byu-pathway-fb-ads-insights" >> $GITHUB_ENV
-          echo "PUBLIC_URL=https://us-central1-byu-pathway-power-bi-report.cloudfunctions.net/byu-pathway-fb-ads-insights" >> $GITHUB_ENV
+          echo "FUNCTION_NAME=digital-nitro-fb-ads-insights" >> $GITHUB_ENV
+          echo "PUBLIC_URL=https://us-central1-dulcet-outlook-361714.cloudfunctions.net/digital-nitro-fb-ads-insights" >> $GITHUB_ENV
 
       - id: set-fn-name
-        name: Set Function Name
         run: echo "::set-output name=fn-name::${{ env.FUNCTION_NAME}}"
 
       - run: |

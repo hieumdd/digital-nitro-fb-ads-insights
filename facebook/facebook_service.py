@@ -16,7 +16,7 @@ def pipeline_service(
     start: Optional[str],
     end: Optional[str],
 ) -> dict[str, Union[str, int]]:
-    ads_account_id = "12726671"
+    ads_account_id = "1000386743838958"
 
     _start = (
         (datetime.utcnow() - timedelta(days=8))

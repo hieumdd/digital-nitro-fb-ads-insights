@@ -102,7 +102,7 @@ def _poll_async_report(session: requests.Session):
 
 def _get_insights(session: requests.Session):
     def _get(report_run_id):
-        def __get(after: str = None) -> list[dict[str, Any]]:
+        def __get(after: Optional[str] = None) -> list[dict[str, Any]]:
             with session.get(
                 f"{BASE_URL}/{report_run_id}/insights",
                 params={

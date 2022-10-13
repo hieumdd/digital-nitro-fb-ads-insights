@@ -1,6 +1,7 @@
 from facebook.pipeline.interface import AdsInsights
 
-ads_insights = AdsInsights(
+
+campaign_insights = AdsInsights(
     "CampaignInsights",
     "campaign",
     [
@@ -98,7 +99,5 @@ ads_insights = AdsInsights(
         "date_stop",
         "account_id",
         "campaign_id",
-        "adset_id",
-        "ad_id",
     ],
 )

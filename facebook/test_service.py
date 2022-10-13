@@ -5,7 +5,7 @@ from facebook.facebook_service import pipeline_service, tasks_service
 
 TIMEFRAME = [
     # ("auto", (None, None)),
-    ("manual", ("2022-07-01", "2022-07-27")),
+    ("manual", ("2022-01-01", "2022-10-01")),
 ]
 
 
@@ -16,7 +16,7 @@ def timeframe(request):
 
 @pytest.fixture(  # type: ignore
     params=pipelines.values(),
-    ids=pipelines.keys(),
+    ids=lambda x: x.name,
 )
 def pipeline(request):
     return request.param
@@ -24,8 +24,8 @@ def pipeline(request):
 
 def test_pipeline_service(pipeline, timeframe):
     res = pipeline_service(pipeline, *timeframe)
-    res
+    assert res
 
 def test_tasks_service(timeframe):
     res = tasks_service(*timeframe)
-    res
+    assert res

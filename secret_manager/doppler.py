@@ -14,7 +14,7 @@ def _get_secret(name: str):
                 "config": "prd",
                 "name": name,
             },
-            auth=(os.getenv("DOPPLER_TOKEN"), ""),
+            auth=(os.getenv("DOPPLER_TOKEN", ""), ""),
         ) as r:
             res = r.json()
         return res["value"]["raw"]
