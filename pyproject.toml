@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "digital-nitro-fb-ads-insights"
+version = "1.0.0"
+description = ""
+authors = ["HM <hieumdd@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "~3.9"
+requests = "^2.28.1"
+google-cloud-bigquery = "^3.3.0"
+google-cloud-tasks = "^2.10.0"
+compose = "^1.4.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+black = "^22.6.0"
+mypy = "^0.971"
+types-requests = "^2.28.7"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "-s --durations=0"
+
+[tool.mypy]
+python_version = 3.9
+ignore_missing_imports = true
+namespace_packages = true
