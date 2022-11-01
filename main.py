@@ -8,9 +8,10 @@ def main(request):
     data: dict[str, Any] = request.get_json()
     print(data)
 
-    if "table" in data:
+    if "table" in data and "ads_account_id" in data:
         response = pipeline_service(
             pipelines[data["table"]],
+            data["ads_account_id"],
             data.get("start"),
             data.get("end"),
         )

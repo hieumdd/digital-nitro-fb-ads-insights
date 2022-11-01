@@ -7,7 +7,7 @@ from google.cloud import tasks_v2
 from google import auth
 
 _, PROJECT_ID = auth.default()
-CLOUD_TASKS_PATH = (PROJECT_ID if PROJECT_ID else "", "us-central1", "facebook")
+CLOUD_TASKS_PATH = (PROJECT_ID if PROJECT_ID else "", "us-central1", "fb-ads-insights")
 
 
 def create_tasks(

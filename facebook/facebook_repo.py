@@ -8,8 +8,8 @@ from compose import compose
 
 from secret_manager.doppler import get_access_token
 
-API_VER = "v14.0"
-BASE_URL = f"https://graph.facebook.com/{API_VER}/"
+API_VER = "v15.0"
+BASE_URL = f"https://graph.facebook.com/{API_VER}"
 
 
 def _request_async_report(session: requests.Session):

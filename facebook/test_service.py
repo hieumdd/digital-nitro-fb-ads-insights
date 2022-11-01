@@ -2,10 +2,11 @@ import pytest
 
 from facebook.pipeline import pipelines
 from facebook.facebook_service import pipeline_service, tasks_service
+from facebook.accounts import accounts
 
 TIMEFRAME = [
-    # ("auto", (None, None)),
-    ("manual", ("2022-01-01", "2022-10-01")),
+    ("auto", (None, None)),
+    # ("manual", ("2022-01-01", "2022-11-01")),
 ]
 
 
@@ -22,9 +23,15 @@ def pipeline(request):
     return request.param
 
 
-def test_pipeline_service(pipeline, timeframe):
-    res = pipeline_service(pipeline, *timeframe)
+@pytest.mark.parametrize(
+    "account",
+    accounts,
+    ids=lambda account: account.ads_account_id,
+)
+def test_pipeline_service(pipeline, account, timeframe):
+    res = pipeline_service(pipeline, account.ads_account_id, *timeframe)
     assert res
+
 
 def test_tasks_service(timeframe):
     res = tasks_service(*timeframe)

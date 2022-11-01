@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from compose import compose
 
 from facebook.pipeline import interface, pipelines
-from facebook import facebook_repo
+from facebook import facebook_repo, accounts
 from db import bigquery
 from tasks import cloud_tasks
 
@@ -13,11 +13,10 @@ DATE_FORMAT = "%Y-%m-%d"
 
 def pipeline_service(
     pipeline: interface.AdsInsights,
+    ads_account_id: str,
     start: Optional[str],
     end: Optional[str],
 ) -> dict[str, Union[str, int]]:
-    ads_account_id = "1000386743838958"
-
     _start = (
         (datetime.utcnow() - timedelta(days=8))
         if not start
@@ -45,10 +44,12 @@ def tasks_service(start: Optional[str], end: Optional[str]) -> dict[str, int]:
             [
                 {
                     "table": table,
+                    "ads_account_id": account.ads_account_id,
                     "start": start,
                     "end": end,
                 }
                 for table in pipelines.keys()
+                for account in accounts.accounts
             ],
             lambda x: x["table"],
         )
